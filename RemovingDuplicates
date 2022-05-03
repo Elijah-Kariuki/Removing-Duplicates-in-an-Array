@@ -1,0 +1,37 @@
+using System;
+using System.Configuration;
+ 
+namespace RemoveDuplicates
+{ 
+    class Program
+    {
+        private static void Main(string[] args)
+ 
+        {
+            string[] myArray = { "Alpha", "Omega", "Beta", "Alpha" };
+            string[] myArray2 = new string[myArray.Length];   //new array that will only record the elements that do not match the ‘Next’ element.
+            var j = 0;   // used to write the last element
+ 
+ 
+                Array.Sort(myArray);   //required to compare one element to the ‘Next’ element
+ 
+                for (var i = 0; i < myArray.Length - 1; i++)   //Length is set to minus 1 to keep the element within bounds
+                {
+                    if (!myArray[i].Equals(myArray[i + 1]))   //could also be written as myArray[i] != myArray[I + 1] which is the comparing function
+                    {
+                        myArray2[j++] = myArray[i];   //creates the new list into an array
+                    }
+                }
+ 
+                myArray2[j++] = myArray[myArray.Length - 1];   //used to setup the last element to be stored in the myArray2
+ 
+                for (var i = 0; i < j; i++)   //stores the last element in myArray2
+                {
+                    Console.WriteLine(myArray2[i] + " “);   //outputs the new array list without the duplicates
+                }
+ 
+ 
+               
+        }    
+  }
+}
